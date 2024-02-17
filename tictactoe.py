@@ -114,7 +114,7 @@ def min_value(board):
     return v
 
 def minimax(board):
-    """ Returns the optimal action for the AI on the board. """
+    """ Returns the optimal action for AI on the board. """
     if terminal(board):
         return None
     
