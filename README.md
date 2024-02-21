@@ -8,8 +8,6 @@ Welcome to Tic-Tac-Toe with AI! This is a classic Tic-Tac-Toe game where you can
 
 **Starting the Game:** To start the game, simply click on an empty cell in the grid to place your symbol. The AI will automatically make its move after you.
 
-**Winning:** If you win, the game will congratulate you and offer the option to play again. If the game ends in a draw, it will let you know and prompt you to start a new game.
-
 **Note:** Keep in mind that the AI is programmed to make the most optimal move in every situation. While you can still enjoy playing and strategizing against it, it's highly unlikely that you'll be able to defeat it.
 
 ## Installation
