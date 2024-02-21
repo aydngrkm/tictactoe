@@ -87,10 +87,10 @@ def terminal(board):
 
 def utility(board):
     """ Returns 1 if X has won the game, -1 if O has won, 0 otherwise. """
-    winner = winner(board)
-    if winner == X:
+    victor = winner(board)
+    if victor == X:
         return 1
-    elif winner == O:
+    elif victor == O:
         return -1
     else:
         return 0
