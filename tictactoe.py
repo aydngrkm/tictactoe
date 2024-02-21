@@ -54,22 +54,27 @@ def result(board, action):
 
 def winner(board):
     """ Returns the winner of the game, if there is one. """
-    if board[0][0] == board[0][1] and board[0][1] == board[0][2]:
-        return board[0][0]
-    if board[1][0] == board[1][1] and board[1][1] == board[1][2]:
-        return board[1][0]
-    if board[2][0] == board[2][1] and board[2][1] == board[2][2]:
-        return board[2][0]
-    if board[0][0] == board[1][0] and board[1][0] == board[2][0]:
-        return board[0][0]
-    if board[0][1] == board[1][1] and board[1][1] == board[2][1]:
-        return board[0][1]
-    if board[0][2] == board[1][2] and board[1][2] == board[2][2]:
-        return board[0][2]
-    if board[0][0] == board[1][1] and board[1][1] == board[2][2]:
-        return board[0][0]
-    if board[0][2] == board[1][1] and board[1][1] == board[2][0]:
-        return board[0][2]
+    if board[0][0] != EMPTY:
+        if board[0][0] == board[0][1] and board[0][1] == board[0][2]:
+            return board[0][0]
+        elif board[0][0] == board[1][0] and board[1][0] == board[2][0]:
+            return board[0][0]
+
+    if board[1][1] != EMPTY:
+        if board[1][0] == board[1][1] and board[1][1] == board[1][2]:
+            return board[1][1]
+        elif board[0][1] == board[1][1] and board[1][1] == board[2][1]:
+            return board[1][1]
+        elif board[0][0] == board[1][1] and board[1][1] == board[2][2]:
+            return board[1][1]
+        elif board[0][2] == board[1][1] and board[1][1] == board[2][0]:
+            return board[1][1]
+
+    if board[2][2] != EMPTY:
+        if board[2][0] == board[2][1] and board[2][1] == board[2][2]:
+            return board[2][2]
+        elif board[0][2] == board[1][2] and board[1][2] == board[2][2]:
+            return board[2][2]
 
 
 def terminal(board):
@@ -82,10 +87,10 @@ def terminal(board):
 
 def utility(board):
     """ Returns 1 if X has won the game, -1 if O has won, 0 otherwise. """
-    pl_who_won = winner(board)
-    if pl_who_won == X:
+    winner = winner(board)
+    if winner == X:
         return 1
-    elif pl_who_won == O:
+    elif winner == O:
         return -1
     else:
         return 0
@@ -118,18 +123,18 @@ def minimax(board):
     if terminal(board):
         return None
     
-    curr_pl = player(board)
+    curr_player = player(board)
     acts = list(actions(board))
     best_move = acts[0]
 
-    if curr_pl == X:
+    if curr_player == X:
         for act in acts:
             if min_value(result(board, act)) > min_value(result(board, best_move)):
                 best_move = act
 
         return best_move
     
-    if curr_pl == O:
+    if curr_player == O:
         for act in acts:
             if max_value(result(board, act)) < max_value(result(board, best_move)):
                 best_move = act
